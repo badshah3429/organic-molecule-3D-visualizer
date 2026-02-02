@@ -2,7 +2,7 @@
 
 Interactive 3D molecular structure visualizer for organic chemistry education, powered by PubChem and Three.js.
 
-**Live Demo:** [ochem-visualizer.vercel.app](https://ochem-visualizer.vercel.app/)
+**Live Demo:** https://organic-molecule-3-d-visualizer.vercel.app/
 
 ## Features
 
@@ -63,5 +63,6 @@ ochem-visualizer/
 
 - [PubChem](https://pubchem.ncbi.nlm.nih.gov/) for providing molecular data
 - [Three.js](https://threejs.org/) for 3D rendering capabilities
+
 
 
