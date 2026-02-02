@@ -1,4 +1,4 @@
-# OChem Visualizer
+# Its Badshah
 
 Interactive 3D molecular structure visualizer for organic chemistry education, powered by PubChem and Three.js.
 
@@ -58,13 +58,9 @@ ochem-visualizer/
 ├── og-image.svg    # Open Graph preview image
 ├── robots.txt      # Search engine directives
 └── sitemap.xml     # Site structure for SEO
-```
-
-## License
-
-MIT License - see [LICENSE](LICENSE) for details.
 
 ## Acknowledgments
 
 - [PubChem](https://pubchem.ncbi.nlm.nih.gov/) for providing molecular data
 - [Three.js](https://threejs.org/) for 3D rendering capabilities
+
