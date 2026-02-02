@@ -24,8 +24,8 @@ Interactive 3D molecular structure visualizer for organic chemistry education, p
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/ochem-visualizer.git
-   cd ochem-visualizer
+   git clone https://github.com/badshah3429/organic-molecule-3D-visualizer.git
+   organic-molecule-3D-visualizer
    ```
 
 2. Open `index.html` in a browser, or serve with any static file server:
@@ -63,4 +63,5 @@ ochem-visualizer/
 
 - [PubChem](https://pubchem.ncbi.nlm.nih.gov/) for providing molecular data
 - [Three.js](https://threejs.org/) for 3D rendering capabilities
+
 
