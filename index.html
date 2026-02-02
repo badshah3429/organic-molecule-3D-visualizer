@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>3D Molecule Visualizer - Organic Chemistry Structure Viewer</title>
+    <meta name="title" content="3D Molecule Visualizer - Organic Chemistry Structure Viewer">
+    <meta name="description" content="Free interactive 3D molecule visualizer for organic chemistry. Search millions of molecules from PubChem, view ball-and-stick models, Lewis structures, and molecular properties. Perfect for students and educators.">
+    <meta name="keywords" content="molecule visualizer, 3D molecules, organic chemistry, Lewis structure, ball and stick model, PubChem, molecular structure, chemistry education, VSEPR, molecular geometry, chemical structure viewer">
+    <meta name="author" content="OChem Visualizer">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ochem-visualizer.vercel.app/">
+    <meta property="og:title" content="3D Molecule Visualizer - Organic Chemistry Structure Viewer">
+    <meta property="og:description" content="Free interactive 3D molecule visualizer. Search millions of molecules, view 3D structures, Lewis diagrams, and molecular properties.">
+    <meta property="og:image" content="https://ochem-visualizer.vercel.app/og-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="OChem Visualizer">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://ochem-visualizer.vercel.app/">
+    <meta name="twitter:title" content="3D Molecule Visualizer - Organic Chemistry Structure Viewer">
+    <meta name="twitter:description" content="Free interactive 3D molecule visualizer. Search millions of molecules, view 3D structures, Lewis diagrams, and molecular properties.">
+    <meta name="twitter:image" content="https://ochem-visualizer.vercel.app/og-image.svg">
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://ochem-visualizer.vercel.app/">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1831808995712219" crossorigin="anonymous"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "3D Molecule Visualizer",
+        "description": "Free interactive 3D molecule visualizer for organic chemistry. Search millions of molecules from PubChem, view ball-and-stick models, Lewis structures, and molecular properties.",
+        "url": "https://ochem-visualizer.vercel.app/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "OChem Visualizer"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "PubChem",
+            "url": "https://pubchem.ncbi.nlm.nih.gov"
+        },
+        "audience": {
+            "@type": "EducationalAudience",
+            "educationalRole": "student"
+        },
+        "about": [
+            {"@type": "Thing", "name": "Organic Chemistry"},
+            {"@type": "Thing", "name": "Molecular Structure"},
+            {"@type": "Thing", "name": "3D Visualization"}
+        ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Organic Chemistry 3D Visualizer</h1>
+            <p>Search millions of molecules from PubChem</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-section">
+                <div class="search-box">
+                    <input type="text" id="molecule-search" placeholder="Search any molecule (e.g., caffeine, aspirin, glucose)...">
+                    <button id="search-btn">Search</button>
+                </div>
+                <div id="search-results" class="search-results"></div>
+            </div>
+
+            <div class="quick-select">
+                <label>Quick Select:</label>
+                <select id="molecule-select">
+                    <option value="">-- Common Molecules --</option>
+                    <optgroup label="Alkanes">
+                        <option value="methane">Methane</option>
+                        <option value="ethane">Ethane</option>
+                        <option value="propane">Propane</option>
+                        <option value="butane">Butane</option>
+                    </optgroup>
+                    <optgroup label="Aromatic">
+                        <option value="benzene">Benzene</option>
+                        <option value="toluene">Toluene</option>
+                        <option value="naphthalene">Naphthalene</option>
+                    </optgroup>
+                    <optgroup label="Alcohols">
+                        <option value="methanol">Methanol</option>
+                        <option value="ethanol">Ethanol</option>
+                    </optgroup>
+                    <optgroup label="Biomolecules">
+                        <option value="glucose">Glucose</option>
+                        <option value="caffeine">Caffeine</option>
+                        <option value="aspirin">Aspirin</option>
+                        <option value="cholesterol">Cholesterol</option>
+                        <option value="dopamine">Dopamine</option>
+                        <option value="serotonin">Serotonin</option>
+                        <option value="adrenaline">Adrenaline</option>
+                    </optgroup>
+                    <optgroup label="Amino Acids">
+                        <option value="glycine">Glycine</option>
+                        <option value="alanine">Alanine</option>
+                        <option value="tryptophan">Tryptophan</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="view-controls">
+                <label>View:</label>
+                <button class="view-btn active" data-view="ball-stick">Ball & Stick</button>
+                <button class="view-btn" data-view="space-fill">Space Fill</button>
+                <button class="view-btn" data-view="stick">Stick</button>
+            </div>
+
+            <div class="rotation-controls">
+                <label>
+                    <input type="checkbox" id="auto-rotate" checked>
+                    Auto-rotate
+                </label>
+                <label>
+                    Speed: <input type="range" id="rotation-speed" min="1" max="10" value="3">
+                </label>
+            </div>
+
+        </div>
+
+        <div class="viewer-container">
+            <div class="main-column">
+                <div id="molecule-viewer" class="molecule-viewer">
+                    <div id="loading" class="loading hidden">
+                        <div class="spinner"></div>
+                        <p>Loading molecule...</p>
+                    </div>
+                </div>
+
+                <div class="lewis-section">
+                    <h4>Lewis Structure (2D)</h4>
+                    <div class="lewis-container">
+                        <canvas id="lewis-canvas" width="500" height="300"></canvas>
+                        <p class="lewis-hint">Lines = bonds, dots = lone pairs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <h3 id="molecule-name">Select a Molecule</h3>
+                <div id="molecule-formula" class="formula"></div>
+                <div id="molecule-weight" class="weight"></div>
+                <div id="molecule-info" class="info-text">Search for any molecule or pick one from the dropdown to visualize its 3D structure.</div>
+
+                <div id="molecule-properties" class="properties-grid"></div>
+
+                <div id="molecule-smiles" class="smiles-box"></div>
+
+                <div id="molecule-links" class="molecule-links"></div>
+
+                <details class="legend-details">
+                    <summary>Atom Colors (CPK)</summary>
+                    <div class="legend">
+                        <div class="legend-item"><span class="atom-color carbon"></span> Carbon (C)</div>
+                        <div class="legend-item"><span class="atom-color hydrogen"></span> Hydrogen (H)</div>
+                        <div class="legend-item"><span class="atom-color oxygen"></span> Oxygen (O)</div>
+                        <div class="legend-item"><span class="atom-color nitrogen"></span> Nitrogen (N)</div>
+                        <div class="legend-item"><span class="atom-color sulfur"></span> Sulfur (S)</div>
+                        <div class="legend-item"><span class="atom-color phosphorus"></span> Phosphorus (P)</div>
+                        <div class="legend-item"><span class="atom-color halogen"></span> Halogens (F, Cl, Br, I)</div>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <p><strong>Drag</strong> to rotate | <strong>Scroll</strong> to zoom | <strong>Double-click</strong> to reset</p>
+        </div>
+
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>OChem Visualizer provides a clean, modern interface for exploring molecular structures using PubChem's open database.</p>
+                    <a href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank" rel="noopener" class="footer-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        PubChem Open Data
+                    </a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank" rel="noopener" class="footer-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        PubChem Database
+                    </a>
+                    <a href="https://github.com/avactus/ochem-visualizer" target="_blank" rel="noopener" class="footer-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View Source
+                    </a>
+                </div>
+
+                <div class="footer-section support-section">
+                    <h4>Support This Project</h4>
+                    <p>Help keep OChem Visualizer running and ad-light.</p>
+                    <a href="https://ko-fi.com/avactus" target="_blank" rel="noopener" class="coffee-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z"/></svg>
+                        Support on Ko-fi
+                    </a>
+                </div>
+            </div>
+            <div class="footer-attribution">
+                <p>All data from: <a href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubChem</a></p>
+                <p>Not affiliated with NIH/NLM/NCBI</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Three.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- OrbitControls -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <script src="pubchem.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
